@@ -1,0 +1,68 @@
+<app-particles></app-particles>
+<div class="relative min-h-screen flex items-center justify-center">
+  <!-- Login Box -->
+  <div class="relative rounded-xl shadow-2xl flex max-w-4xl w-full z-10 bg-gray-50">
+    <!-- Right Side: Image -->
+    <div class="w-1/2 hidden lg:block bg-gradient-to-br from-purple-700 to-indigo-900 rounded-l-xl">
+      <img src="https://images3.alphacoders.com/647/647522.jpg" 
+           class="w-full h-full object-cover rounded-l-xl">
+    </div>
+
+    <!-- Left Side: Login form -->
+    <div class="w-full lg:w-1/2 p-10 flex flex-col justify-center">
+      <div class="text-center mb-8">
+        <img src="https://riwi.io/wp-content/uploads/2023/07/favicon.png" alt="logo" class="mx-auto mb-4 h-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Welcome back!</h2>
+        <p class="text-gray-500">Enter your email and password to sign in</p>
+      </div>
+
+      <form (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label for="email" class="block text-gray-600 text-sm font-semibold mb-2">Email</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="loginForm.email"
+            name="email"
+            class="w-full px-4 py-2 bg-gray-50 border-b-2 rounded-lg border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        
+        <div class="mb-4">
+          <label for="password" class="block text-gray-600 text-sm font-semibold mb-2">Password</label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="loginForm.password"
+            name="password"
+            class="w-full px-4 py-2 rounded-lg bg-gray-50 border-b-2 border-gray-300 text-gray-700 focus:outline-none focus:ring-0 focus:border-indigo-500"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center">
+            <input type="checkbox" id="remember" [(ngModel)]="rememberMe" name="rememberMe" class="mr-2">
+            <label for="remember" class="text-sm text-gray-600">Remember me</label>
+          </div>
+          <a href="#" (click)="forgotPassword()" class="text-sm text-indigo-500 hover:underline">Forgot your password?</a>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300"
+        >
+          Log In
+        </button>
+      </form>
+
+      <p class="mt-6 text-center text-gray-600">
+        Don't have an account? 
+        <a [routerLink]="['/register']" class="text-indigo-500 hover:underline">Register here</a>
+      </p>
+    </div>
+  </div>
+</div>
