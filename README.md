@@ -1,27 +1,69 @@
-# LoginFull
+Formas de Ejecutar el Proyecto
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+1. Desde el Código Fuente
+Backend (Spring Boot)
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Clonar el repositorio y navegar al backend:
+git clone https://github.com/Marulanda921/LoginBack.git
+cd LoginBack
+Configurar la base de datos en application.properties:
 
-## Code scaffolding
+properties
+spring.datasource.url=jdbc:mysql://localhost:3306/tu_base_de_datos
+spring.datasource.username=tu_usuario
+spring.datasource.password=tu_contraseña
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ejecutar el backend:
+mvn clean install
+mvn spring-boot:run
 
-## Build
+Frontend (Angular)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Clonar el repositorio y navegar al frontend:
+git clone https://github.com/Marulanda921/LoginFront.git
+cd LoginFront
 
-## Running unit tests
+Instalar dependencias:
+npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ejecutar el frontend:
+ng serve
 
-## Running end-to-end tests
+2. Usando Docker
+Ejecutar los Contenedores Docker
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+Descargar las imágenes:
+docker pull achner/backendfinal:latest
+docker pull achner/backendfinal-angular:latest
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Ejecutar el backend:
+docker run -d -p 8080:8080 achner/backendfinal:latest
+
+Ejecutar el frontend:
+docker run -d -p 4200:80 achner/backendfinal-angular:latest
+3. Usando Docker Compose
+Crear un archivo docker-compose.yml y usar el siguiente contenido básico:
+
+yaml
+Copy code
+version: '3.8'
+
+services:
+  backend:
+    image: achner/backendfinal:latest
+    ports:
+      - "8080:8080"
+  frontend:
+    image: achner/backendfinal-angular:latest
+    ports:
+      - "4200:80"
+
+      
+Ejecutar con Docker Compose:
+docker-compose up -d
+
+Acceso a la Aplicación
+Frontend: http://localhost:4200
+Backend: http://localhost:8080
