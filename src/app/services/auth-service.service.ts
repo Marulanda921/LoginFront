@@ -28,11 +28,11 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://login-full-latest.onrender.com/api/auth'; // Ajusta esto a la URL de tu backend
+  private apiUrl = 'https://backendfinal-latest.onrender.com/api/auth';
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor(private http: HttpClient, private router: Router) { // Inyecta Router
+  constructor(private http: HttpClient, private router: Router) { 
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') || '{}'));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -60,8 +60,8 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null); // Limpia el subject
-    this.router.navigate(['/login']); // Redirige a la página de inicio de sesión
+    this.currentUserSubject.next(null); 
+    this.router.navigate(['/login']); 
   }
 
   getToken(): string | null {

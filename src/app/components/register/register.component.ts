@@ -23,11 +23,14 @@ export class RegisterComponent implements OnInit {
     this.authService.signup(this.registerForm).subscribe(
       response => {
         console.log('Registration successful', response);
+        // Mostrar mensaje de éxito al usuario
         alert('Registration successful! Please log in.');
+
         this.router.navigate(['/login']);
       },
       error => {
         console.error('Registration failed', error);
+
         alert('Registration failed: ' + (error.error?.message || 'Unknown error'));
       }
     );

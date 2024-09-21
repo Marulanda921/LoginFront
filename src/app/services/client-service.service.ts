@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClientService {
-  private apiUrl = 'https://backlogin-latest.onrender.com/api/clients';
+  private apiUrl = 'https://backendfinal-latest.onrender.com/api/clients';
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,6 @@ export class ClientService {
       return new HttpHeaders(); 
     }
   }
-
  
   getAllClients(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl, { headers: this.getHeaders() });
